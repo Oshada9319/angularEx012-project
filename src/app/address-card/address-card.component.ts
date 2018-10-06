@@ -8,7 +8,7 @@ import { User } from './user.model';
 })
 export class AddressCardComponent implements OnInit {
 
-  @Input("user") userObj:User;
+  @Input("user") user:User;
   
   constructor() {
   }
