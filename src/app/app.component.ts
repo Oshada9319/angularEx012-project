@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from './address-card/user.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { User } from './address-card/user.model';
 })
 export class AppComponent {
   user: User;
-  constructor(){
+  constructor(private http: HttpClient){
     this.user=new User();
     this.user.name="Oshada Maheeshan";
     this.user.title="Engineer-Technology";
@@ -19,4 +20,12 @@ export class AppComponent {
         "011-2652253"
     ];
   }
+
+  ngOnInit(){
+    this.http.get('https://api.github.com/users/koushikkothagal')
+    .subscribe((response) => {
+      console.log(response);
+    });
+  }
+
 }
