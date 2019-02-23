@@ -1,4 +1,5 @@
 import { AppPage } from './app.po';
+import { browser, by, element } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -7,8 +8,18 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display home page', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to angularEx001-project!');
+    //browser.pause();
+    expect(page.getParagraphText()).toEqual('Home Page');
+  });
+  it('should display about button', () => {
+    page.navigateTo();
+    expect(page.getAboutButton().getText()).toEqual('About');
+  });
+  it('should route to about page', () => {
+    page.navigateTo();
+    page.getAboutButton().click();
+    expect(page.getAboutText()).toEqual('About Page');
   });
 });
